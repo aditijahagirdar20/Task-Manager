@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
+import { useSelector } from "react-redux";
+import { Container } from "@mui/material";
+import TodoList from "./components/TodoList";
+import Login from "./components/Login";
+import SignUp from "./components/SignUp";
 
-function App() {
+const App = () => {
+  const token = useSelector((state) => state.auth.token);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Container>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route
+            path="/todos"
+            element={token ? <TodoList /> : <Navigate to="/login" />}
+          />
+          <Route path="/" element={<Navigate to="/login" />} />
+        </Routes>
+      </Container>
+    </Router>
   );
-}
+};
 
 export default App;
