@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 
-const apiUrl = "http://localhost:5000/api/auth";
+const apiUrl = "https://task-manager-backend-1-4a4e.onrender.com/api/auth";
 
 // Async thunk for user registration
 const registerUser = createAsyncThunk("auth/registerUser", async (userData) => {

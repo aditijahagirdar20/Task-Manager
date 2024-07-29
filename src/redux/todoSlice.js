@@ -3,7 +3,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const apiUrl = "http://localhost:5000/api/todos"; // Replace with your backend API URL
+const apiUrl = "https://task-manager-backend-1-4a4e.onrender.com/api/todos"; // Replace with your backend API URL
 
 // Async thunk to fetch todos for a specific user
 const fetchTodos = createAsyncThunk("todos/fetchTodos", async (userEmail) => {
